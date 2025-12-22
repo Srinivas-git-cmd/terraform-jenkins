@@ -2,11 +2,18 @@ provider "aws" {
     region = "us-east-1"  
 }
 
-resource "aws_instance" "sri" {
-  ami           = "ami-0ecb62995f68bb549" 
-  instance_type = "t2.micro"
+provider "aws_s3_bucket" "jenkins_bucket" {
+  bucket = "jenkins-bucket-98765" # Change to a unique bucket name
+  acl    = "private"
+
+  versioning {
+    enabled = true
+  }
+
   tags = {
-      Name = "TF-Instance"
+    Name        = "JenkinsBucket"
+    Environment = "Dev"
   }
 }
+
 
