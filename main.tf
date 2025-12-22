@@ -2,18 +2,15 @@ provider "aws" {
     region = "us-east-1"  
 }
 
-provider "aws_s3_bucket" "jenkins_bucket" {
-  bucket = "jenkins-bucket-98765" # Change to a unique bucket name
+resource aws_s3_bucket "jenkins_bucket" {
+  bucket = "jenkins-bucket-unique-name-123456"
   acl    = "private"
-
-  versioning {
-    enabled = true
-  }
 
   tags = {
     Name        = "JenkinsBucket"
     Environment = "Dev"
   }
 }
+
 
 
