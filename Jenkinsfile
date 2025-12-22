@@ -1,15 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        // Automatic scheduled build (every 5 minutes)
-        cron('H/5 * * * *')
-    }
-
-    environment {
-        TF_IN_AUTOMATION = "true"
-    }
-
     stages {
 
         stage('Checkout') {
@@ -56,5 +47,6 @@ pipeline {
         }
     }
 }
+
 
 
